@@ -33,7 +33,7 @@ client.connect(err => {
   const cameraCollection = client.db("gadgefy").collection("CameraData");
   const adminCollection = client.db("gadgefy").collection("admin");
  
-  const getValueCollection = client.db("gadgefy").collection("getValue");
+  // const getValueCollection = client.db("gadgefy").collection("getValue");
   // perform actions on the collection object
 
 
@@ -108,36 +108,36 @@ app.post('/isAdmin',(req,res)=>{
 
 
 
-  app.get('/getValues', (req, res) => {
-    getValueCollection.find()
-      .toArray((error, value) => {
-        res.send(value)
-      })
-  })
+  // app.get('/getValues', (req, res) => {
+  //   getValueCollection.find()
+  //     .toArray((error, value) => {
+  //       res.send(value)
+  //     })
+  // })
 
-  app.get('/getValue/:id', (req, res) =>{
-    getValueCollection.find({ _id: ObjectId(req.params.id) })
-      .toArray((error, items) => {
-        res.send(items)
-      })
-  })
+  // app.get('/getValue/:id', (req, res) =>{
+  //   getValueCollection.find({ _id: ObjectId(req.params.id) })
+  //     .toArray((error, items) => {
+  //       res.send(items)
+  //     })
+  // })
 
-  app.delete('/deleteValue/:id', (req, res) =>{
-    getValueCollection.deleteOne({_id: ObjectId(req.params.id)})
-    .then( result => {
-      res.send(result.deletedCount > 0);
-    })
-  })
+  // app.delete('/deleteValue/:id', (req, res) =>{
+  //   getValueCollection.deleteOne({_id: ObjectId(req.params.id)})
+  //   .then( result => {
+  //     res.send(result.deletedCount > 0);
+  //   })
+  // })
 
-  app.post('/getValues', (req, res) => {
-    const newGetValue = req.body;
-    console.log('selling new cameras',newGetValue);
-    getValueCollection.insertOne(newGetValue)
-      .then(result => {
-        console.log('inserted count', result.insertedCount)
-        res.send(result.insertedCount > 0)
-      })
-  })
+  // app.post('/getValues', (req, res) => {
+  //   const newGetValue = req.body;
+  //   console.log('selling new cameras',newGetValue);
+  //   getValueCollection.insertOne(newGetValue)
+  //     .then(result => {
+  //       console.log('inserted count', result.insertedCount)
+  //       res.send(result.insertedCount > 0)
+  //     })
+  // })
 
  
 
