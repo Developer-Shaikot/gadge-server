@@ -31,40 +31,40 @@ client.connect(err => {
   console.log('connection error: ', err)
 
   const cameraCollection = client.db("gadgefy").collection("CameraData");
-  const adminCollection = client.db("gadgefy").collection("admin");
+//   // const adminCollection = client.db("gadgefy").collection("admin");
  
-  // const getValueCollection = client.db("gadgefy").collection("getValue");
-  // perform actions on the collection object
+//   // const getValueCollection = client.db("gadgefy").collection("getValue");
+//   // perform actions on the collection object
 
 
 
 
-app.get('/addAdmin',(req,res)=>{
-  // console.log('from query ',req.query.email);
-   adminCollection.find({email:req.query.email})
-    .toArray((err,admin)=>{
-        res.send(admin)
-        console.log(err,admin);
-    })
-})
- app.post('/addAdmin',(req,res)=>{
-  const newAdmin = req.body;
-  console.log(newAdmin);
-  adminCollection.insertOne(newAdmin)
-   .then(result =>{
-       console.log('inserted count',result.insertedCount)
-       res.send(result.insertedCount > 0)
-   })
-})
+// app.get('/addAdmin',(req,res)=>{
+//   // console.log('from query ',req.query.email);
+//    adminCollection.find({email:req.query.email})
+//     .toArray((err,admin)=>{
+//         res.send(admin)
+//         console.log(err,admin);
+//     })
+// })
+//  app.post('/addAdmin',(req,res)=>{
+//   const newAdmin = req.body;
+//   console.log(newAdmin);
+//   adminCollection.insertOne(newAdmin)
+//    .then(result =>{
+//        console.log('inserted count',result.insertedCount)
+//        res.send(result.insertedCount > 0)
+//    })
+// })
 
 
-app.post('/isAdmin',(req,res)=>{
-  // console.log(req.body.email);
-  adminCollection.find({email:req.body.email})
-  .toArray((err, admin) => {
-      res.send(admin.length > 0);
-  })
-})
+// app.post('/isAdmin',(req,res)=>{
+//   // console.log(req.body.email);
+//   adminCollection.find({email:req.body.email})
+//   .toArray((err, admin) => {
+//       res.send(admin.length > 0);
+//   })
+// })
 
   app.get('/addCameras', (req, res) => {
     cameraCollection.find()
